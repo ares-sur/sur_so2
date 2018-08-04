@@ -1,0 +1,42 @@
+simple oauth2 
+	simple db access
+	
+refrence
+	
+	[本项目主要参照文档]
+		http://www.cnblogs.com/wookong/p/9244132.html
+	
+	[oauth2流程讲解]	
+		https://my.oschina.net/lemos/blog/871091
+	
+	[值得一看的oauth2文档]
+		spring cloud security oauth2 搭建授权服务	[spring 5]
+			https://segmentfault.com/a/1190000014687027
+		
+		官方文档
+			https://www.cnblogs.com/dream-to-pku/p/7452059.html
+		
+		oauth2 with db --(redis mysql)
+			https://blog.csdn.net/qq_33460562/article/details/79351938 		
+
+	
+【密码授权模式-client】
+	密码模式需要参数：username,password,grant_type,client_id,client_secret
+	http://localhost:8080/oauth/token?username=user1&password=123456&grant_type=password&client_id=client&client_secret=secret
+
+【客户端授权模式-password】
+	客户端模式需要参数：grant_type,client_id,client_secret
+	http://localhost:8080/oauth/token?grant_type=client_credentials&client_id=client&client_secret=secret
+
+【授权码模式-code】
+	获取code
+	http://localhost:8080/oauth/authorize?response_type=code&client_id=client&redirect_uri=http://baidu.com
+
+	通过code换token
+		http://localhost:8080/oauth/token?grant_type=authorization_code&code=Filepd&client_id=client&client_secret=secret&redirect_uri=http://baidu.com
+		
+		example
+			[1A04WO]
+			http://localhost:8080/oauth/token?grant_type=authorization_code&code=1A04WO&client_id=client&client_secret=secret&redirect_uri=http://baidu.com
+	
+	
